@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="robots" content="noimageindex, noarchive">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#ffffff">
+  <meta id="viewport" name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <link rel="stylesheet" href="select-css.css">
+  <link rel="stylesheet" href="flexboxgrid2.css">
+
+  <title>Tu aporte cuenta</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@200;400;600;800&family=Zilla+Slab+Highlight&display=swap"
+    rel="stylesheet">
+  <style>
+    /* * {
+            box-sizing: border-box
+        } */
+
+    body {
+      color: #444;
+      font-family: 'Saira Condensed', sans-serif;
+    }
+
+    .t1 {
+      font-family: 'Saira Condensed', sans-serif;
+    }
+
+    .w4 {
+      font-weight: 600;
+    }
+
+    .w6 {
+      font-weight: 600;
+    }
+
+    .s1 {
+      font-size: 1em
+    }
+
+    .s2 {
+      font-size: 2em
+    }
+
+    .s3 {
+      font-size: 3em
+    }
+
+    .s4 {
+      font-size: 4em
+    }
+
+    .s15 {
+      font-size: 1.5em
+    }
+
+    .t2 {
+      font-family: 'Zilla Slab Highlight', cursive;
+      font-size: 2.8em;
+    }
+
+    .s {
+      font-size: 1.3em;
+    }
+
+    .ready {
+      color: #57CB29
+    }
+
+    .working {
+      color: #FFD364
+    }
+
+    .donate {
+      color: #64D5FF
+    }
+
+    .pending {
+      color: #EFEFEF
+    }
+
+
+    .bready {
+      background-color: #57CB29
+    }
+
+    .bworking {
+      background-color: #FFD364
+    }
+
+    .bdonate {
+      background-color: #64D5FF
+    }
+
+    .bpending {
+      background-color: #EFEFEF
+    }
+
+
+    .gray {
+      color: #aaa
+    }
+
+    .inline {
+      float: left;
+    }
+
+    .status {
+      padding-right: 10px;
+    }
+
+    .amount-selector {
+      border-bottom: 5px;
+    }
+
+    .donate-button {
+      background-color: #64D5FF;
+      color: white;
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .selector-container {
+      /* border-bottom: 3px solid #64D5FF; */
+      background-color: #f7f7f7;
+    }
+
+    .padding-left {
+      padding-left: 7px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .imgContainer {
+      width: 100%;
+    }
+
+    .price {
+      color: green;
+    }
+
+    .bar {
+      float: left;
+      height: 2em;
+    }
+  </style>
+</head>
+
+<body class="">
+  <div id="app">
+
+    <div class="row">
+      <div class="col-xs">
+        <div class="t2">Todos contra el virus</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div v-for="product in products" class="col-xs-12
+          col-sm-6
+          col-lg-4
+          col-xl-3">
+        <div class="row">
+          <div class="col-xs">
+            <div class="inline status">
+              <div class="t1 w6 s2">{{product}}</div>
+            </div>
+            <div class="inline">
+              <div class="t1 w6 s2 price">€5</div>
+            </div>
+          </div>
+          <div class="imgContainer">
+            <img class="col-xs end-xs" src="pieza1-A.jpg">
+          </div>
+        </div>
+        <div class="row between-xs">
+          <div class="col-xs">
+            <div class="t1 s w2 ready inline status">
+              Listas: 20
+            </div>
+            <div class="t1 s w2 working inline status">
+              Fabricando: 10
+            </div>
+            <div class="t1 s w2 gray inline status" style="float: right;">
+              Objetivo: 1000
+            </div>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="col-xs">
+            <div class="bar bready"   :style="{ width: readyWidth + '%' }"></div>
+            <div class="bar bworking" :style="{ width: workingWidth + '%' }"></div>
+            <div class="bar bdonate"  :style="{ width: donateWidth + '%' }"></div>
+            <div class="bar bpending" :style="{ width: objectiveWidth + '%' }"></div>
+            <!-- <div style="float: left; width: 10%; height: 2em; background-color: #FFD364;"></div>
+            <div style="float: left; width: 5%;  height: 2em; background-color: #64D5FF;"></div>
+            <div style="float: left; width: 65%; height: 2em; background-color: #EFEFEF;"></div> -->
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs ">
+            <div class="s2 t1 w4 donate inline status">
+              Donar
+            </div>
+            <div class="donate inline">
+              <select v-model="donate" class="select-css">
+                <option>100</option>
+                <option>50</option>
+                <option>30</option>
+                <option>20</option>
+                <option>10</option>
+                <option>5</option>
+                <option>2</option>
+              </select>
+            </div>
+            <div class="t1 s2 w4 donate inline padding-left">
+              {{product}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row center-xs">
+      <div class="col-xs-12 ">
+        <button class="donate-button t1 s2 w4">
+          DONAR
+        </button>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!',
+      // readyWidth: 25,
+      // workingWidth: 11,
+      // donateWidth: 4,
+      // objectiveWidth: (100 - 11 - 11 - 25),
+      ready: 250,
+      working: 110,
+      donate: 10,
+      objective: 1000,
+      products: ['Valvulas', 'Mascarillas', 'Compresores', 'Filtros']
+    },
+    created: function ()  {
+      var self = this
+      setTimeout(function () {
+        console.log('update!')
+        self.donate = 100
+      }, 3000)
+    },
+    computed: {
+      readyWidth: function () {
+        return this.ready / this.objective * 100
+      },
+      workingWidth: function ()  {
+        return this.working / this.objective * 100
+      },
+      donateWidth: function ()  {
+        return this.donate / this.objective * 100
+      },
+      objectiveWidth: function ()  {
+        this.donate
+        return (this.objective - ( this.ready + this.working + this.donate) ) / this.objective * 100
+      }
+    }
+  })
+</script>
+
+</html>

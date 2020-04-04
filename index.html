@@ -182,7 +182,9 @@
             </div>
           </div>
           <div class="imgContainer">
-            <img class="col-xs end-xs" src="pieza1-A.jpg">
+            <!-- <img class="col-xs end-xs" src="pieza1-A.jpg"> -->
+            <video class="col-xs end-xs" autoplay playsinline loop>
+              <source src="pieza1.mp4" type="video/mp4">
           </div>
         </div>
         <div class="row between-xs">
@@ -200,13 +202,10 @@
         </div>
         <div class="row ">
           <div class="col-xs">
-            <div class="bar bready"   :style="{ width: readyWidth + '%' }"></div>
+            <div class="bar bready" :style="{ width: readyWidth + '%' }"></div>
             <div class="bar bworking" :style="{ width: workingWidth + '%' }"></div>
-            <div class="bar bdonate"  :style="{ width: donateWidth + '%' }"></div>
+            <div class="bar bdonate" :style="{ width: donateWidth + '%' }"></div>
             <div class="bar bpending" :style="{ width: objectiveWidth + '%' }"></div>
-            <!-- <div style="float: left; width: 10%; height: 2em; background-color: #FFD364;"></div>
-            <div style="float: left; width: 5%;  height: 2em; background-color: #64D5FF;"></div>
-            <div style="float: left; width: 65%; height: 2em; background-color: #EFEFEF;"></div> -->
           </div>
         </div>
 
@@ -260,7 +259,7 @@
       objective: 1000,
       products: ['Valvulas', 'Mascarillas', 'Compresores', 'Filtros']
     },
-    created: function ()  {
+    created: function () {
       var self = this
       setTimeout(function () {
         console.log('update!')
@@ -271,15 +270,15 @@
       readyWidth: function () {
         return this.ready / this.objective * 100
       },
-      workingWidth: function ()  {
+      workingWidth: function () {
         return this.working / this.objective * 100
       },
-      donateWidth: function ()  {
+      donateWidth: function () {
         return this.donate / this.objective * 100
       },
-      objectiveWidth: function ()  {
+      objectiveWidth: function () {
         this.donate
-        return (this.objective - ( this.ready + this.working + this.donate) ) / this.objective * 100
+        return (this.objective - (this.ready + this.working + this.donate)) / this.objective * 100
       }
     }
   })
